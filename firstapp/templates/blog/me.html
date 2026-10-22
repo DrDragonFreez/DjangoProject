@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4 text-center">
+        <h2>Добро пожаловать, <b>{{ user.username }}</b>!</h2>
+        <p class="text-muted">Это ваша личная страница.</p>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger rounded-pill px-4">Выйти</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

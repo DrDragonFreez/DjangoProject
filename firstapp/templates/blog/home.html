@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block title %}Статьи{% endblock %}
+{% block content %}
+<section class="hero mb-5">
+  <p class="eyebrow">ЛАБОРАТОРНАЯ РАБОТА</p>
+  <h1>Привет, <span>{{ user.username }}</span>!<br>Добро пожаловать</h1>
+  <p class="hero-copy">Заметки о Django, устройстве сайтов и инструментах веб-разработчика.</p>
+  <a class="btn btn-light rounded-pill px-4" href="#articles">Читать статьи ↓</a>
+</section>
+<section id="articles" class="pb-5"><div class="section-heading"><div><p class="eyebrow">БИБЛИОТЕКА</p><h2>Последние статьи</h2></div><span class="article-count">{{ articles|length }} материала</span></div>
+<div class="row g-4">{% for article in articles %}<div class="col-12 col-md-6"><article class="article-card h-100"><div class="article-meta">СТАТЬЯ <span>·</span> {{ forloop.counter|stringformat:"02d" }}</div><h3><a href="{% url 'article' article.id %}">{{ article.title }}</a></h3><p>{{ article.get_short_text }}</p><a class="read-link" href="{% url 'article' article.id %}">Открыть статью ↗</a></article></div>{% empty %}<div class="col-12"><p>Статей пока нет. Добавьте их в панели администратора.</p></div>{% endfor %}</div></section>
+{% endblock %}

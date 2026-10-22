@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Адаптивная вёрстка — Лаба №6</title>
+    <link rel="stylesheet" href="{% static 'firstapp/adaptive.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a class="logo" href="/adaptive/">
+            <span>W</span><span>E</span><span>B</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Открыть меню">
+            <span></span>
+        </button>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Портфолио</a></li>
+                <li><a href="#">О сайте</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="posts-list">
+        <article class="post">
+            <div class="post-image">
+                <img src="https://picsum.photos/id/1018/800/450" alt="Весна">
+            </div>
+            <div class="post-content">
+                <div class="category"><a href="#">Дизайн</a></div>
+                <h2 class="post-title">Весна</h2>
+                <p>Очень богат русский язык словами, относящимися к временам года и к природным явлениям, с ними связанным. Возьмём хотя бы раннюю весну.</p>
+                <div class="post-footer">
+                    <a href="#" class="more-link">Продолжить чтение</a>
+                    <div class="post-social">
+                        <a href="#" title="Facebook"><i>f</i></a>
+                        <a href="#" title="Twitter"><i>t</i></a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Категории</h3>
+            <ul class="widget-category-list">
+                <li><a href="#">Дизайн</a> (2)</li>
+                <li><a href="#">Вёрстка</a> (5)</li>
+                <li><a href="#">Видео</a> (1)</li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h3 class="widget-title">Последние записи</h3>
+            <ul class="widget-posts-list">
+                <li>
+                    <div class="widget-post-image-small">
+                        <img src="https://picsum.photos/id/1015/80/80" alt="">
+                    </div>
+                    <h4 class="widget-post-title">Весна</h4>
+                </li>
+                <li>
+                    <div class="widget-post-image-small">
+                        <img src="https://picsum.photos/id/1016/80/80" alt="">
+                    </div>
+                    <h4 class="widget-post-title">Лето</h4>
+                </li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h3 class="widget-title">Подписка на рассылку</h3>
+            <form action="#" method="post" id="subscribe">
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <button type="submit">→</button>
+            </form>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-col"><span>Мой блог © 2026</span></div>
+        <div class="footer-col">
+            <div class="social-bar-wrap">
+                <a href="#" title="Facebook">f</a>
+                <a href="#" title="Twitter">t</a>
+                <a href="#" title="Instagram">i</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <a href="mailto:admin@yoursite.ru">Написать письмо</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $('.nav-toggle').on('click', function () {
+        $('#menu').toggleClass('active');
+    });
+</script>
+
+</body>
+</html>

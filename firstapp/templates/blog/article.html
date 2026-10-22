@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+<article class="reading-page">
+  <a class="back-link" href="{% url 'home' %}">← Все статьи</a>
+  <p class="eyebrow mt-4">ВЕБ-ТЕХНОЛОГИИ</p>
+  <h1>{{ article.title }}</h1>
+  <div class="reading-copy">{{ article.text|linebreaks }}</div>
+</article>
+
+<section class="reading-page mt-5">
+  <h2 class="mb-4">Комментарии ({{ comments|length }})</h2>
+
+  {% for com in comments %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <p class="mb-1"><b>{{ com.name }}</b></p>
+        <p class="text-muted small mb-2">{{ com.created_on|timesince }} назад</p>
+        <p class="mb-0">{{ com.comment }}</p>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">Комментариев пока нет. Будьте первым!</p>
+  {% endfor %}
+
+  <hr class="my-4">
+
+  {% if user.is_authenticated %}
+    <h4 class="mb-3">Оставить комментарий</h4>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Имя</label>
+    <input type="text" name="name" class="form-control" value="{{ user.username }}" readonly>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Комментарий</label>
+    <textarea name="comment" class="form-control" rows="4" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-dark rounded-pill px-4">Добавить</button>
+</form>
+  {% else %}
+    <div class="alert alert-info">
+      Чтобы оставить комментарий, <a href="{% url 'login' %}">войдите</a>.
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
